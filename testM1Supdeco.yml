@@ -1,0 +1,22 @@
+nom : CI Android
+sur :
+ push :
+   branches : [maître]
+ pull_request :
+   branches : [maître]
+
+jobs :
+ build :
+   runs-on : ubuntu-latest
+   steps :
+     – nom : Checkout
+       utilise : actions/checkout@v2.4.0
+     – nom : Setup JDK
+       utilise : actions/setup-java@v2.5.0
+       avec :
+         distribution : 'temurin'
+         java -version : '11'
+     – nom : définir l'indicateur d'exécution pour l'exécution gradlew
+       : chmod +x gradlew
+     – nom : construire avec
+       l'exécution Gradle : ./gradlew build
